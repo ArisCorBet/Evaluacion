@@ -1,0 +1,164 @@
+Clase Mesa
+
+La clase Mesa representa una mesa en el restaurante la cual puede representar las siguientes características
+
+Atributos:
+
+●	idMesa: Id(identificador) único de cada mesa la cual estará definida por un número ya que son finitos (tipo: int).
+●	numeroAsientos: El número de asientos que tiene la mesa (tipo: int).
+●	ubicacion: me permite saber en qué parte del restaurante se encuentra la mesa (a lado de la ventana, terraza, patio entre otros. (tipo: string).
+●	estado: estado actual de la mesa, que puede ser libre, ocupada o reservada (tipo: EstadoMesa, que puede ser un enum).
+●	mesasUnidas: hace referencia a la lista de mesas que están unidas a una mesa en específico (tipo: List<Mesa>).
+
+Métodos:
+
+●	cambiarEstado: Esto es cuando se acaba la reservación cambia de estado (reservado a desocupada). (nuevoEstado:EstadoMesa).
+●	liberarMesa: una vez desocupada la mesa, libera la mesa, cambiando su estado a libre para ser desocupada (void).
+●	unirMesa: hace referencia cuando se necesita juntar mesas para un grupo grande de personas el cual se utiliza el método unirMesa para combinar mesas temporalmente (otraMesa: Mesa).
+
+
+ EstadoMesa <<enumerador>>:
+
+se lo define como numerador porque en el restaurante existirá un número finito de mesas (libres, ocupadas y reservadas)
+
+Relación:
+
+ESTADOMESA -ASOCIADA CON MESA | Estado(*) de muchas se asigna una mesa Mesa(1)
+
+
+
+Clase Reservacion
+
+La clase Reservacion maneja la información de las reservaciones en el restaurante.
+Atributos:
+●	idReservacion: Un identificador único . para cada reservación (tipo: int).
+●	cliente: hace referencia a la reservación que realiza el cliente dentro del restaurante (tipo: Cliente).
+●	cantidadPersonas: El número de personas para la reservación (tipo: int).
+●	fechaHora: La fecha y hora de la reservación (tipo: string).
+●	listaMesas: lista de mesas asignadas a la reservación por parte del cliente (tipo: List<Mesa>).
+
+Métodos:
+
+●	modificarReservacion(nuevosDatos: Reservacion): Modifica los detalles de una   reservación existente
+●	cancelarReservacion(): Cancela la reservación.
+
+Relación:
+
+MESA - ASOCIADA con RESERVACION | muchas Mesas(*) solo tendrá Reservacion (1)
+
+
+Clase Cliente
+
+La clase Cliente representa a un cliente que hace reservaciones en el restaurante.
+
+Atributos:
+
+●	nombre: El nombre del cliente (tipo: string)
+●	telefono: El número de teléfono del cliente (tipo: string).
+●	email: El correo electrónico del cliente (tipo: string).
+●	listaReservaciones: Una lista de todas las reservaciones que el cliente ha hecho      (tipo: List<Reservacion>).
+
+Métodos:
+
+●	hacerReservacion(reservacion: Reservacion): Crea una nueva reservación para  el cliente.
+●	modificarReservacion(reservacion: Reservacion): Modifica una reservación          existente del cliente.
+●	cancelarReservacion(reservacion: Reservacion): Cancela una reservación del      cliente.
+
+
+Clase Personal
+
+La clase Personal representa al personal del restaurante, como camareros y administradores.
+
+Atributos:
+
+●	idPersonal: Un identificador único para  cada miembro del personal (tipo: int).
+●	nombre: El nombre del miembro del .  personal (tipo: string).
+●	rol: El rol del miembro del personal (tipo:  string), como camarero o administrador.
+●	mesasAsignadas: hace referencia a la lista de mesas que esta a cargo cada personal(tipo: List<Mesa>).
+
+Métodos:
+
+●	asignarMesa(cliente: Cliente): Asigna una mesa a un cliente.
+●	notificarMesaLista(mesa: Mesa): Notifica al personal que una mesa está lista para  ser asignada y ser atendida.
+
+Relaciones:
+
+MESA - ASOCIADA con Personal | muchas Mesas(*) se puede asignar cualquier mesero del Personal(*)
+
+
+Clase ListaDeEspera:
+
+En esta clase definimos la lista de espera que tenemos por parte de las reservaciones que se presentan por los clientes 
+
+●	clientesEnESpera: Es la lista de clientes que esperan realizar una reservación.
+●	tiempoEstimado(int): Tiempo que el cliente puede esperar ya sea (horas, minutos, meses, días, semanas entre otros).
+
+Operaciones:
+
+●	agregarEspera(cliente:Cliente): Agrega al cliente en espera usando la clase cliente. 
+●	removerDeEspera(cliente:Cliente): Remueve o elimina al cliente usando la clase cliente.
+●	notificarDisponibilidad: Notifica al cliente la disponibilidad de reservación.
+
+Relación:
+
+RESERVACION - ASOCIADA con LISTADEESPERA | Reservación se asocia con la lista de espera para ver si existe o no una mesa para ser reservada.
+
+
+Clase Persona: 
+
+Definimos las características que tendrá una persona en el restaurante 
+
+●	nombre(string): Cadena de caracteres.
+●	telefono(string): Cadena de caracteres.
+●	idPersona(int): Identificación de la persona.
+
+Relaciones:
+
+PERSONAL - HERENCIA de PERSONA | El personal hereda todos los atributos de persona.
+ 
+
+CLIENTE - HERENCIA de PERSONA | Cliente hereda los atributos de persona
+RESERVACION ASOCIADA con CLIENTE | Pueden ser muchas Reservaciones(*) para un Cliente(1)
+
+
+Funcionamiento:
+
+
+Registro de Mesas
+
+●	Inicialización: El restaurante registra  todas las mesas con sus atributos (id,  número de asientos, ubicación, estado).
+●	Unión de Mesas: Cuando se necesita  juntar mesas para un grupo grande de personas, se utiliza el método unirMesa  para combinar mesas temporalmente.
+
+Gestión de Reservaciones:
+
+●	Nueva Reservación:
+
+●	Un cliente hace una reservación.
+●	Se crea un objeto Reservacion con los detalles del cliente, la cantidad de personas, y la fecha y hora.
+●	El sistema busca mesas disponible y las asigna a la reservación utilizando la lista listaMesas.
+●	La reservación se guarda en . listaReservaciones del cliente y se actualiza el estado de las mesas a "reservada".
+
+●	Modificar o Cancelar Reservación:
+
+●	El cliente puede modificar o cancelar su reservación.
+●	Se actualizan los detalles de la  reservación en el objeto  Reservacion.
+●	Si se cancela, se liberan las mesas y se actualiza su estado a "libre".
+
+Asignación de Mesas a Clientes sin  Reservación:
+
+●	Un cliente llega sin reservación y  solicita una mesa.
+●	El personal busca mesas libres.
+●	Se asigna una mesa libre al cliente y se actualiza su estado a  "ocupada".
+
+Notificación al Personal y Gestión de Espera
+
+●	Mesa Lista:
+
+●	Cuando una mesa está lista para ser ocupada, el personal es notificado utilizando el método notificar MesaLista en la clase Personal.
+●	El personal puede asignar la mesa a un nuevo cliente o cliente en espera utilizando el método asignarMesa.
+
+●	Lista de Espera:
+
+●	Si todas las mesas están ocupadas los clientes se agregan a una lista de espera.
+
+●	Cuando una mesa se libera, se  revisa la lista de espera y se  asigna la mesa al primer cliente en la lista.
