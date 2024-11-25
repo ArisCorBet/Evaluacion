@@ -1,0 +1,5 @@
+
+
+public enum EstadoReserva {
+    PENDIENTE, CONFIRMADA, CANCELADA, ENCURSO, FINALIZADA
+}
