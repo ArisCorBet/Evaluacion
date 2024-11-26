@@ -1,11 +1,10 @@
 
-
 // Clase Persona
-class Persona {
-    private String nombre;
-    private String cedulaPersona;
-    private String email;
-    private String telefono;
+public abstract class Persona {
+    protected String nombre;
+    protected String cedulaPersona;
+    protected String email;
+    protected String telefono;
 
     public Persona(String nombre, String cedulaPersona, String email, String telefono) {
         this.nombre = nombre;

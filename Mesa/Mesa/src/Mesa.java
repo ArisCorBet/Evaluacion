@@ -50,5 +50,13 @@ class Mesa {
     public String getUbicacion() {
         return ubicacion; // Add this getter method
     }
+
+    public LocalDateTime getHoraDisponible() {
+        return horaDisponible;
+    }
+
+    public List<Mesa> getMesasUnidas() {
+        return mesasUnidas;
+    }
 }
 

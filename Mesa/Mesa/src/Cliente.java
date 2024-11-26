@@ -12,9 +12,6 @@ class Cliente extends Persona implements IReserva {
         this.reservaList = new ArrayList<>();
     }
 
-    public void agregarReserva(Reserva reserva) {
-        this.reservaList.add(reserva);
-    }
 
     public void actualizarInformacion() {
         System.out.println("Información del cliente actualizada.");

@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 class Reserva {
+    //Atributos
     private String identificador;
     private int cantidadPersonas;
     private LocalDate fechaReserva;
@@ -16,7 +17,6 @@ class Reserva {
         this.horaInicio = horaInicio;
         this.horaReservaFinalizada = horaInicio.plusHours(2); // Ejemplo: reserva dura 2 horas
         this.estado = EstadoReserva.ENCURSO;
-
     }
 
     public void modificarReserva(Reserva nuevosDatos) {
@@ -49,6 +49,14 @@ class Reserva {
 
     public LocalDateTime getHoraInicio() {
         return horaInicio; // Add this getter method
+    }
+
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
+    }
+
+    public LocalDateTime getHoraReservaFinalizada() {
+        return horaReservaFinalizada;
     }
 }
 

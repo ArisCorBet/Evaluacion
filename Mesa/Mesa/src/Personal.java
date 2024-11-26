@@ -33,6 +33,12 @@ class Personal extends Persona implements INotificador {
         System.out.println("Tiempo de espera estimado: " + tiempoEstimado + " minutos.");
     }
 
+
+    @Override
+    public void notificarReservaFinalizada() {
+
+    }
+
     @Override
     public void notificarMesaAsignada() {
         System.out.println("Mesa asignada correctamente.");
