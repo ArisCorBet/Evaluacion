@@ -6,7 +6,8 @@ Integrantes:
 - Gerardo David Naula Saraguro
 - Miguel Angel Veintimilla Esparza
 
-![image](https://github.com/user-attachments/assets/acda2b63-9135-427e-9529-26d1850b4a2c)
+![Imagen de WhatsApp 2024-11-26 a las 10 14 17_74617cb2](https://github.com/user-attachments/assets/069fa79f-b47c-4ac4-8172-3feb780db79d)
+
 
 
 Se presentan 3 archivos principales, uno contiene la reflexión, otro el archivo del diagrama UML y la carpeta que contiene el código implementado en JAVA.
