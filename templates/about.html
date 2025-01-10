@@ -1,0 +1,37 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+</head>
+<body>
+<h1>Sobre Nosotros</h1>
+<p>Contenido general de la página "about".</p>
+
+<!-- Botón para regresar al home -->
+<a href="{% url 'home' %}" class="btn-regreso">Regresar al Home</a> <!-- Enlace -->
+
+<!-- Sección de reservaciones -->
+<div id="reservaciones">
+    <h2>Reservaciones</h2>
+    <p>Detalles específicos sobre cómo realizar una reservación.</p>
+</div>
+
+<style>
+    /* Estilos opcionales para el botón */
+    .btn-regreso {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn-regreso:hover {
+        background-color: #0056b3;
+    }
+</style>
+</body>
+</html>
